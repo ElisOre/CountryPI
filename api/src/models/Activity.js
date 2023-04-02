@@ -5,22 +5,24 @@ module.exports = (sequelize) => {
     "activity",
     {
       id: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
+        primariKey: true,
         allownull: false,
+        autoincrement: true,
       },
       name: {
         type: DataTypes.STRING,
         allownull: false,
       },
-      dificult: {
-        type: DataTypes.INTEGER,
+      dificulty: {
+        type: DataTypes.ENUM('1','2','3','4','5'),
         allownull: false,
       },
       time: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
       },
-      temp: {
-        type: DataTypes.STRING,
+      season: {
+        type: DataTypes.ENUM('Verano','Otoño','Invierno','Primavera'),
         allownull: false,
       },
     },

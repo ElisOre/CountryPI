@@ -10,6 +10,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         primaryKey: true,
         allowNull: false,
+        unique: true,
       },
       name: {
         type: DataTypes.STRING,
@@ -31,7 +32,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       area: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
       },
       population: {
         type: DataTypes.INTEGER,
