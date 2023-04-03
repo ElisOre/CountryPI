@@ -60,3 +60,29 @@ router.get("/countries", async (req, res) => {
     res.status(200).json(paises);
   }
 });
+
+router.get("/countries/:idPais", async (req, res) => {
+  const { idPais } = req.params;
+  try {
+    // traigo el país por params
+    const unPais = await Country.findOne({
+      where: {
+        id: idPais.toUpperCase(),
+      },
+      include: {
+        model: Activity,
+      },
+    });
+
+    if (unPais) {
+      // si existe el país
+      return res.status(200).json(unPais);
+    } else {
+      res.status(404).send("El país no se ha encontrado.");
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+module.exports = router;
