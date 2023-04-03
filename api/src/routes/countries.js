@@ -3,7 +3,7 @@ const axios = require("axios");
 const { Country, Activity } = require("../db");
 const seqlz = require("sequelize");
 
-router.get("/countries", async (req, res) => {
+router.get("/", async (req, res) => {
   // name por queries
   const { name } = req.query;
 
@@ -61,7 +61,7 @@ router.get("/countries", async (req, res) => {
   }
 });
 
-router.get("/countries/:idPais", async (req, res) => {
+router.get("/:idPais", async (req, res) => {
   const { idPais } = req.params;
   try {
     // traigo el país por params

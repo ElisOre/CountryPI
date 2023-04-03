@@ -3,13 +3,13 @@ const router = require('express').Router();
 // Ejemplo: const authRouter = require('./auth.js');
 
 
-const country = require('./country.js');
+const country = require('./countries.js');
 const activity = require('./activity.js');
 
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.use('/', country);
+router.use('/countries', country);
 router.use('/activity', activity);
 
 module.exports = router;

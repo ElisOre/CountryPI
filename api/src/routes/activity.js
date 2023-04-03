@@ -1,6 +1,5 @@
 const { Activity, Country } = require("../db");
 const router = require("express").Router();
-const seqlz = require("sequelize");
 
 router.post("/", async (req, res) => {
   const { name, dificulty, time, season, country } = req.body;
