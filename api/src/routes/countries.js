@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   // name por queries
   const { name } = req.query;
 
-  // callback a la api
+  // hago el pedido a la api
   const { data } = await axios.get("https://restcountries.com/v3/all");
   const resp = data?.map((el) => {
     return {
@@ -33,23 +33,27 @@ router.get("/", async (req, res) => {
       await Country.bulkCreate(resp); // inserta múltiples registros en la tabla
     }
   } catch (error) {
-    throw new Error(error);
+    console.log(error);
   }
 
   // búsqueda por name
   if (name) {
     // busco el país
-    const pais = await Country.findAll({
-      where: {
-        name: {
-          [seqlz.Op.iLike]: `%${name}%`, // ilike trabaja entre mayúsculas y minúsculas
+    try {
+      const pais = await Country.findAll({
+        where: {
+          name: {
+            [seqlz.Op.iLike]: `%${name}%`, // ilike trabaja entre mayúsculas y minúsculas
+          },
         },
-      },
-    });
-    // devuelvo el pais en caso de encontrarlo
-    pais.length
-      ? res.status(200).send(pais)
-      : res.status(404).send("No se ha encontrado el país.");
+      });
+      // devuelvo el pais en caso de encontrarlo
+      pais.length
+        ? res.status(200).send(pais)
+        : res.status(404).send("No se ha encontrado el país.");
+    } catch (error) {
+      console.log(error);
+    }
   } else {
     // si no hay name devuelvo todos los países
     const paises = await Country.findAll({
@@ -81,7 +85,7 @@ router.get("/:idPais", async (req, res) => {
       res.status(404).send("El país no se ha encontrado.");
     }
   } catch (error) {
-    throw new Error(error);
+    console.log(error);
   }
 });
 
