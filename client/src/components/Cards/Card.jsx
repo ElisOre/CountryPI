@@ -1,12 +1,12 @@
 import React from "react";
 import './card.css';
 
-export default function Card({flags, name, region, id}) {
+export default function Card({flags, name, region}) {
     return (
-        <div className="card" key={id}>
+        <div className="card">
             <img src={flags} alt={name} />
-            <h2>País: {name}</h2>
-            <h4>Continente: {region}</h4>
+            <h2>Country: {name}</h2>
+            <h4>Continent: {region}</h4>
         </div>
     );
 };

@@ -20,12 +20,17 @@ export default function AllCards() {
         estadoCountry.map((pais) => {
           return (
             <Link to={`/details/${pais.id}`}>
-              <Card flags={pais.flags} name={pais.name} region={pais.region} id={pais.id} />
+              <Card
+                flags={pais.flags}
+                name={pais.name}
+                region={pais.region}
+                key={pais.id}
+              />
             </Link>
           );
         })
       ) : (
-        <h4>Cargando...</h4>
+        <h4>Loading...</h4>
       )}
     </div>
   );
