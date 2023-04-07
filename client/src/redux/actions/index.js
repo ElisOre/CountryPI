@@ -33,10 +33,8 @@ export function getCountryBySearch(name) {
 export function getCountryDetails(idPais) {
   return async (dispatch) => {
     try {
-      const idPaisDb = await axios.get(
-        `http://localhost:3001/countries/${idPais}`
-      );
-      return dispatch({
+      const idPaisDb = await axios.get(`http://localhost:3001/countries/${idPais}`);
+      dispatch({
         type: GET_COUNTRY_DETAILS,
         payload: idPaisDb.data,
       });
