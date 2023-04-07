@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     return {
       id: el.cca3,
       name: el.name.common,
-      flags: el.flags[0],
+      flags: el.flags[1],
       region: el.region,
       capital: el.capital ? el.capital[0] : "Este país no tiene capital",
       subregion: el.subregion,
