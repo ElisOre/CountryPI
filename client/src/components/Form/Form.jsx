@@ -33,8 +33,6 @@ export default function Form() {
   });
 
   const setDataHandler = (e) => {
-    e.preventDefault();
-
     setActivity({
       ...activity,
       [e.target.name]: e.target.value,
@@ -49,7 +47,6 @@ export default function Form() {
   };
 
   const handleCountries = (e) => {
-    e.preventDefault();
     if (activity.country.includes(e.target.value)) {
       return alert("This country has already been loaded");
     } else {
@@ -191,12 +188,12 @@ export default function Form() {
             ))}
           </>
           <div className="btnSubmit">
-            <input type="submit" value="Add activity" />
+            <input type="submit" value="ADD ACTIVITY" />
           </div>
         </form>
 
         <Link to="/home">
-          <button className="volver">Back to home</button>
+          <button className="volver">BACK TO HOME</button>
         </Link>
       </div>
     </section>
